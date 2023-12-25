@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Validator;
 use App\Models\User;
 use Auth;
@@ -10,9 +11,6 @@ use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    
-    
-   
     public function register(Request $request)
     {
         try {

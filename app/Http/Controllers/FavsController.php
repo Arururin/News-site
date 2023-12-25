@@ -11,14 +11,9 @@ class FavsController extends Controller
         return Fav::get();
     }
 
-    public function showByUserId(Request $request, $id){
+    public function showById(Request $request, $id){
         $userFav = Fav::where("user_id", $request->user_id)->get();
         return $userFav;
-    }
-
-    public function showByNewsId(Request $request, $id){
-        $newsFav = Fav::where("news_id", $request->news_id)->get();
-        return $newsFav;
     }
 
     public function post(Request $request){

@@ -11,6 +11,11 @@ class NewsController extends Controller
         return News::get();
     }
 
+    public function showById($id){
+        $news = News::where("news_id", $id)->get();
+        return $news;
+    }
+
     public function showByAuthorId($id){
         $newsAuthor = News::where("author_id", $id)->get();
         return $newsAuthor;

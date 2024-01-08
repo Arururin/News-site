@@ -12,8 +12,8 @@ class CommentController extends Controller
         return Comment::get();
     }
 
-    public function showByUserId(Request $request, $id){
-        $userComment = Comment::where("user_id", $request->user_id)->get();
+    public function showByUserId($id){
+        $userComment = Comment::where("user_id", $id)->get();
         return $userComment;
     }
 
@@ -32,9 +32,25 @@ class CommentController extends Controller
         return $comment;
     }
 
+    public function edit(Request $request, $id){
+        $comment = Comment::find($id);
+
+        if (!$comment) {
+            return response()->json(['error' => 'Comment not found'], 404);
+        }
+
+        $comment->user_id = $request->user_id;
+        $comment->news_id = $request->news_id;
+        $comment->text = $request->comment;
+        $comment->save();
+
+        return $comment;
+    }
+
     public function delete(Request $request, $id){
         $comment = Comment::find($id);
         $comment->delete();
         return "Deleted";
     }
+    //
 }

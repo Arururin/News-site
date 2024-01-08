@@ -26,8 +26,8 @@ class UserController extends Controller
                     'message' => 'validation error',
                     'errors' => $validateUser->errors()
                 ], 401);
-            }
-
+            }//
+            
             $user = User::create([
                 'name' => $request->name,
                 'password' => Hash::make($request->password),
